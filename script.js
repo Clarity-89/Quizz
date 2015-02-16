@@ -30,7 +30,7 @@ $(document).ready(function(){
         }
         };
     display();
-$('#but').click(function(){
+$('#next').click(function(){
     var correctChoice = allQuestions[numQuestion].corAnswer;
     var answer = $('input[name=Answer]:checked').val();
     if (answer == correctChoice) {

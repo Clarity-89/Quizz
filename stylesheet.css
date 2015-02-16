@@ -5,10 +5,12 @@
 h1 {
     font-family: 'Indie Flower', cursive;
 }
-#but {
+#next {
     position: relative;
-    right: -10px;
+    right: -30px;
     top: 20px;
+}
+.button {
     height: 35px;
     width: 60px;
     margin: auto;
@@ -17,4 +19,12 @@ h1 {
     background-color: #00c800;
     font-family: 'Lobster', cursive;
     font-size: 1em;
+}
+#prev {
+    position: relative;
+    right: -10px;
+    top: 20px;
+}
+.highlight {
+
 }
