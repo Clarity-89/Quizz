@@ -18,7 +18,7 @@ $(document).ready(function(){
 }];
     var numCorrect = 0;
     var numQuestion = 0;
-       var display = function() {
+          var display = function() {
         if (numQuestion === allQuestions.length) {
             $('h2').text('You are done with the quiz, your score is ' + numCorrect);
             $('h1, #form').remove();
@@ -33,14 +33,20 @@ $(document).ready(function(){
 $('#next').click(function(){
     var correctChoice = allQuestions[numQuestion].corAnswer;
     var answer = $('input[name=Answer]:checked').val();
-    if (answer == correctChoice) {
+    if ($("input:radio[name=Answer]").is(":checked") === false) {
+        alert("Make a choice!");
+        return false;
+                } else if (answer == correctChoice) {
         numCorrect++;
     }
     numQuestion++;
     display();
-   });
+    });
 $('#prev').click(function(){
         numQuestion--;
+    if (numQuestion < 0){
+        numQuestion = 0;
+    }
     display();
     });
-});
+    });
