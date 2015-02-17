@@ -28,6 +28,7 @@ $(document).ready(function(){
                $('#a'+(i+1)).text(allQuestions[numQuestion].choices[i]);
            }
         }
+            $('input[name=Answer]').attr('checked',false);
         };
     display();
 $('#next').click(function(){
