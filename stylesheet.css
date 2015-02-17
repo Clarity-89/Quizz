@@ -5,11 +5,13 @@
 h1 {
     font-family: 'Indie Flower', cursive;
 }
+
 #next {
-    position: relative;
-    right: -30px;
-    top: 20px;
+    position: absolute;
+    left: 90px;
+    top: 261px;
 }
+
 .button {
     height: 35px;
     width: 60px;
@@ -20,11 +22,14 @@ h1 {
     font-family: 'Lobster', cursive;
     font-size: 1em;
 }
+
 #prev {
     position: relative;
     right: -10px;
     top: 20px;
+    display: none;
 }
+
 .highlight {
 
 }
