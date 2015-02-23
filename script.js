@@ -3,26 +3,36 @@
  */
 /*global $:false */
 $(document).ready(function () {
-    var allQuestions = [{
-        question: "Who is Prime Minister of the United Kingdom?",
-        choices: ["David Cameron", "Gordon Brown", "Tony Blair", "Winston Churchill"],
-        corAnswer: 0
-    }, {
-        question: "Which country has the biggest population?",
-        choices: ["Finland", "China", "India", "USA"],
-        corAnswer: 1
-    }, {
-        question: "Which country does not belong to Scandinavia?",
-        choices: ["Sweden", "Finland", "Denmark", "Iceland"],
-        corAnswer: 3
-    }];
-    allQuestions.forEach(function (indx) {
-        indx.usersAnswer = null;
+    /* var allQuestions = [{
+     question: "Who is Prime Minister of the United Kingdom?",
+     choices: ["David Cameron", "Gordon Brown", "Tony Blair", "Winston Churchill"],
+     corAnswer: 0
+     }, {
+     question: "Which country has the biggest population?",
+     choices: ["Finland", "China", "India", "USA"],
+     corAnswer: 1
+     }, {
+     question: "Which country does not belong to Scandinavia?",
+     choices: ["Sweden", "Finland", "Denmark", "Iceland"],
+     corAnswer: 3
+     }]; */
+
+    var allQuestions;
+    jQuery.get('questions.js', function (content) {
+        allQuestions = JSON.parse(content);
+
+        allQuestions.forEach(function (indx) { //create a new property to store users' answer
+            indx.usersAnswer = null;
+        });
+        display();
+
+
+        fading();
     });
     var numCorrect = 0;
     var numQuestion = 0;
     $('h1').hide().fadeIn('slow');
-    var display = function () {
+    function display() {
         if (numQuestion > 0) {
             $('#prev').show();
         }
@@ -36,18 +46,17 @@ $(document).ready(function () {
             }
         }
 
+    }
 
-    };
-    display();
-    fading();
-    function fading (){
+    function fading() {
         $('h2').hide().fadeIn();
-        for (var i = 0; i <=allQuestions.length; i++) {
+        for (var i = 0; i <= allQuestions.length; i++) {
             $('div').not('#next').hide().fadeIn();
         }
     }
-    fading();
+
     $('#next').click(function () {
+        fading();
         var correctChoice = allQuestions[numQuestion].corAnswer;
         var answer = $('input[name=Answer]:checked').val();
         allQuestions[numQuestion].usersAnswer = answer;
@@ -59,21 +68,21 @@ $(document).ready(function () {
             numCorrect++;
         }
         numQuestion++;
-        fading();
+
         console.log(numQuestion);
         display();
         $('input[name=Answer]').attr('checked', false);
 
     });
     $('#prev').click(function () {
-        fading();
+
         numQuestion--;
         numCorrect--;
         if (numQuestion < 0) {
             numQuestion = 0;
         }
         console.log(numQuestion);
-        if (numQuestion === 0){
+        if (numQuestion === 0) {
             $('#prev').css({"display": "none"});
         }
         var showPrev = function () {
@@ -83,4 +92,5 @@ $(document).ready(function () {
         showPrev();
         display();
     });
+
 });
