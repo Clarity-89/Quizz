@@ -72,10 +72,8 @@ $(document).ready(function () {
         console.log(numQuestion);
         display();
         $('input[name=Answer]').attr('checked', false);
-
     });
     $('#prev').click(function () {
-
         numQuestion--;
         numCorrect--;
         if (numQuestion < 0) {
