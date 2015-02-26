@@ -41,4 +41,9 @@ form label {
     width: 300px;
     margin: 0 auto;
 }
+.error {
+    background-color: red;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: large;
 
+}

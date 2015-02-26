@@ -55,17 +55,20 @@ $(document).ready(function () {
             $('div').not('#next').hide().fadeIn();
         }
     }
-
+    function clear() {
+        $(".error").remove();
+    }
     $('#next').click(function () {
-        fading();
         var correctChoice = allQuestions[numQuestion].corAnswer;
         var answer = $('input[name=Answer]:checked').val();
         allQuestions[numQuestion].usersAnswer = answer;
         console.log(allQuestions); //log the usersAnswer to check if they save correctly
         if ($("input:radio[name=Answer]").is(":checked") === false) {
-            alert("Please make your choice!");
-            return false;
+            clear();
+            $('<p><span class="error">Please make a selection!</span></p>').fadeIn('fast').appendTo($("#main"));
+            return;
         } else if (answer == correctChoice) {
+            fading();
             numCorrect++;
         }
         numQuestion++;
@@ -93,7 +96,4 @@ $(document).ready(function () {
         display();
     });
 
-});
-$(function() {
-    $('#main').hide();
 });
