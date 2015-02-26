@@ -59,6 +59,7 @@ $(document).ready(function () {
         $(".error").remove();
     }
     $('#next').click(function () {
+        clear();
         var correctChoice = allQuestions[numQuestion].corAnswer;
         var answer = $('input[name=Answer]:checked').val();
         allQuestions[numQuestion].usersAnswer = answer;
