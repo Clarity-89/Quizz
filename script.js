@@ -3,6 +3,7 @@
  */
 /*global $:false */
 $(document).ready(function () {
+
     /* var allQuestions = [{
      question: "Who is Prime Minister of the United Kingdom?",
      choices: ["David Cameron", "Gordon Brown", "Tony Blair", "Winston Churchill"],
@@ -74,6 +75,7 @@ $(document).ready(function () {
         $('input[name=Answer]').attr('checked', false);
     });
     $('#prev').click(function () {
+        fading();
         numQuestion--;
         numCorrect--;
         if (numQuestion < 0) {
@@ -91,4 +93,7 @@ $(document).ready(function () {
         display();
     });
 
+});
+$(function() {
+    $('#main').hide();
 });
